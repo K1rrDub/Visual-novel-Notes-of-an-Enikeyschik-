@@ -18,22 +18,13 @@ define perezagruzka = False
 define perezagruzka2 = False
 define audio.call = "sounds/call.ogg"
 
-label splashscreen:
-    scene black
-    pause(0.5)
-
-    scene ligo2 with fade
-    pause (2)
-
-    scene black with fade
-    return
-
-
 label start:
-    $ renpy.movie_cutscene('video/zastavka.avi')
-    play music "audio/fon.ogg"
+
+
+
+
+    stop music
     scene bg kabgg
-    with fade
     window hide
     background '''АКТ 1 "ПОИСК РАБОТЫ"'''
     nvl hide
@@ -47,29 +38,20 @@ label start:
     scene bg malisroom
     with fade
 
-
-
-
-
-
     window hide
     background '''АКТ 2 “СОБЕСЕДОВАНИЕ”'''
     nvl hide
     nvl clear
 
-
-    show irina2
-    voice "Iri/Irina1.ogg"
+    show irina3
     Irina "Здравствуйте, Александр. Рада Вас видеть. Меня зовут Ирина Константиновна, но можно просто Ирина. Добро пожаловать на собеседование."
-    hide irina2
-    show irina1
-    Alexandr "Здравствуйте, Ирина. Спасибо за приглашение."
-    hide irina1
 
-    show irina2
-    voice "Iri/Irina2.mp3"
+    Alexandr "Здравствуйте, Ирина. Спасибо за приглашение."
+    hide irina3
+
+    show irina1
     Irina "Подскажите, почему вы выбрали именно нашу компанию?"
-    hide irina2
+    hide irina1
 
     menu:
         "Выберите вариант ответа"
@@ -89,15 +71,13 @@ label start:
 label exit1:
 
     show irina4
-    voice "Iri/Irina2.1_2.2.mp3"
     Irina "Мне нравится ваши амбиции, мы вам перезвоним."
 
     window hide
     scene plox_konc
-    play music "audio/bad_kon.mp3"
     with fade
     $ renpy.notify("Вам не перезвонили...(Плохая концовка)")
-    "Конец"
+    background '''Конец'''
     nvl hide
     nvl clear
 
@@ -105,17 +85,17 @@ label exit1:
 
 label ne_exit1:
 
-    show irina2
-    voice "Iri/Irina2.3.mp3"
+    show irina3
     Irina "Хорошо, давайте начнём с обсуждения условий работы у нас в компании."
+    hide irina3
 
-    voice "Iri/Irina3.mp3"
+    show irina1
     Irina "Прежде всего, основным условием устройства на работу является успешное прохождение 3-х дневной стажировки у нас в компании. По окончании стажировки вас ожидает анкетирование."
+    hide irina1
 
-    voice "Iri/Irina4.mp3"
+    show irina3
     Irina "Задачи у вас будут разнообразными. Во время прохождения стажировки, вам будет назначен наставник, который будет следить за вашими успехами и направлять вас во время работы. Ваш наставник - главный системный администратор Сергей."
-    hide irina2
-
+    hide irina3
     menu:
         "Выберите вариант ответа"
 
@@ -129,15 +109,13 @@ label ne_exit1:
 label exit2:
 
     show irina6
-    voice "Iri/Irina4.2.mp3"
     Irina "Не будем перечить вашему желанию. Если вы передумаете, то обязательно позвоните."
 
     window hide
     scene plox_konc
-    play music "audio/bad_kon.mp3"
     with fade
     $ renpy.notify("Вы отказались от стажировки...(Плохая концовка)")
-    "Конец"
+    background '''Конец'''
     nvl hide
     nvl clear
 
@@ -146,11 +124,10 @@ label exit2:
 label ne_exit2:
 
     show irina2
-    voice "Iri/Irina4.1.mp3"
     Irina "Замечательно, Александр. Мы ждем вас завтра. Если у вас есть еще какие-либо вопросы касающиеся прохождения стажировки, не стесняйтесь задавать их Сергею, вашему наставнику."
 
     window hide
-    scene black
+    show black
     $ renpy.notify("Вы согласились на стажировку")
     background '''АКТ 3 СТАЖИРОВКА'''
     background ''' ДЕНЬ ПЕРВЫЙ'''
@@ -162,11 +139,9 @@ label ne_exit2:
 
     "Александр входит в офис компании."
 
-    show mali2
-    voice "Uri/Urik1.mp3"
-    UrikMali "Доброе утро, Александр. Рад видеть тебя на стажировке. Давай поговорим в моем кабинете перед началом рабочего дня."
-    hide mali2
     show mali1
+    UrikMali "Доброе утро, Александр. Рад видеть тебя на стажировке. Давай поговорим в моем кабинете перед началом рабочего дня."
+
     Alexandr "Здравствуйте, мистер Мали."
 
     scene bg malisroom
@@ -175,19 +150,16 @@ label ne_exit2:
     "Александр вместе с Уриком Мали входит в кабинет мистера Мали."
 
     show mali2
-    voice "Uri/Urik2.mp3"
     UrikMali "Прошу, садись. Готов к прохождению первого дня стажировки?"
+
+    Alexandr "Да, уже не терпится."
     hide mali2
 
     show mali1
-    Alexandr "Да, уже не терпится."
+    UrikMali "Отлично. На стажировке ты будешь изучать различные аспекты нашей работы."
     hide mali1
 
     show mali2
-    voice "Uri/Urik3.mp3"
-    UrikMali "Отлично. На стажировке ты будешь изучать различные аспекты нашей работы."
-
-    voice "Uri/Urik4.mp3"
     UrikMali "Сергей, наш главный системный администратор, не всегда справляется с большой работой. От тебя потребуется помогать Сергею и выполнять его задание которые он тебе будет давать во время работы."
     hide mali2
 
@@ -196,7 +168,6 @@ label ne_exit2:
     hide mali1
 
     show mali2
-    voice "Uri/Urik5.mp3"
     UrikMali "Теперь давай пойдем к Сергею. Он даст тебе первое поручение."
     hide mali2
 
@@ -206,19 +177,14 @@ label ne_exit2:
     "Урик Мали проводит Александра к Сергею."
 
     show mali6
-    voice "Uri/Urik6.mp3"
     UrikMali "Сергей, это Александр, наш новый стажер. Александр, это Сергей, твой наставник. Вы знакомьтесь а я пойду с вой кабинет."
+    hide mali6
 
     "Урик Мали уходит в свой кабинет."
-    hide mali6
-    with fade
-
-    show sergey6
-    voice "Ser/Serge1.mp3"
-    Sergei "Здравствуй, Саня. Рад тебя видеть. Давай начнем с чего-то интересного. У меня есть для тебя задача, которую ты скорее всего сможешь решить."
-    hide sergey6
 
     show sergey5
+    Sergei "Здравствуй, Саня. Рад тебя видеть. Давай начнем с чего-то интересного. У меня есть для тебя задача, которую ты скорее всего сможешь решить."
+
     Alexandr "Здравствуйте, Сергей."
 
     menu:
@@ -227,7 +193,7 @@ label ne_exit2:
         "Сначала перекур перед рабочим днем, а после за работу.":
             $ krits = krits + 1
             $ renpy.notify("Он запомнит это")
-            call krit1 from _call_krit1
+            call krit1
             show sergey5
             Alexandr "Я готов к работе. Что нужно делать?"
 
@@ -236,21 +202,15 @@ label ne_exit2:
             Alexandr "Я готов к работе. Что нужно делать?"
 
     show sergey6
-    voice "Ser/Serge3.mp3"
     Sergei "Хорошо, первое задание для тебя. У нас сегодня ожидается поставка комплектующих ПК и периферии для обустройства новых рабочих мест. Мы должны принять и отсортировать все компоненты."
-
-    voice "Ser/Serge4.mp3"
     Sergei "Вот список компонентов, которые должны быть в поставке. Твоя задача - проверить, что все компоненты присутствуют и отсортировать каждый компонент в коробку."
     hide sergey6
 
     show sergey5
     "Сергей передает Александру список компонентов и документацию."
-
     Alexandr "Хорошо, поставка будет на складе?"
     hide sergey5
-
     show sergey6
-    voice "Ser/Serge5.mp3"
     Sergei "Верно. Я тебя провожу."
 
     "Александр с Сергеем направляются на склад для приема поставки."
@@ -259,7 +219,6 @@ label ne_exit2:
     with fade
 
     show sergey6
-    voice "Ser/Serge6.mp3"
     Sergei "Вот коробки, можешь начинать работать, а я приду сюда примерно через 10 минут, проведать тебя."
     hide sergey6
 
@@ -267,7 +226,6 @@ label ne_exit2:
     Alexandr "Хорошо."
 
     hide sergey5
-    with fade
 
     "Александр начинает разгружать компоненты и также начинает их сортировку."
 
@@ -275,23 +233,19 @@ label ne_exit2:
 
     menu:
         "Открыть коробку и посмотреть что стало с монитором.":
-            call posmotret_v_korobky from _call_posmotret_v_korobky
+            call posmotret_v_korobky
         "Убрать коробку с монитором в угол склада и сделать вид как будто ничего не было.":
-            call ybrat_korobky from _call_ybrat_korobky
+            call ybrat_korobky
     "Александр продолжает работать в своем темпе."
     "Спустя 30 минут."
     "Александр заканчивает разгрузку и сортировку компонентов и в этот момент на склад заходит Сергей."
     show sergey6
-    voice "Ser/Serge16.mp3"
     Sergei "Ну что, Саня. Закончил работу с компонентами?"
     hide sergey6
-
     show sergey5
     Alexandr "Да, Сергей. Как раз закончил."
     hide sergey5
-
     show sergey6
-    voice "Ser/Serge17.mp3"
     Sergei "Тогда пойдем к нам в офис."
     hide sergey6
     "Александр с Сергеем направился обратно в офис компании Rinus Corp."
@@ -301,10 +255,8 @@ label ne_exit2:
     with fade
 
     show sergey6
-    voice "Ser/Serge18.mp3"
     Sergei "Так держать. Я пойду покурить, а ты остаешься за старшего."
     hide sergey6
-
     show sergey5
     menu:
         "Выберите вариант ответа"
@@ -313,9 +265,8 @@ label ne_exit2:
             Alexandr "Хорошо, Сергей."
 
         "Может я с вами пойду?":
-            call vishel_pokyrit from _call_vishel_pokyrit
+            call vishel_pokyrit
     hide sergey5
-    with fade
     "Сергей уходит из офиса компании в курилку."
     "2 минуты спустя."
     "Растерянная Ирина входит в офис компании Rinus Corp. и подходит к Александру."
@@ -326,10 +277,8 @@ label ne_exit2:
 label vishel_pokyrit:
     hide sergey5
     show sergey6
-    voice "Ser/Serge19.mp3"
     Sergei "Нам нужно чтобы, хотя бы 1 человек оставался за главного."
     hide sergey6
-
     show sergey5
 
     menu:
@@ -339,49 +288,38 @@ label vishel_pokyrit:
             $ perekyr_s_sergeem = True
             $ krits = krits + 1
             $ renpy.notify("Он запомнит это")
-            call vishel_pokyrit_krit from _call_vishel_pokyrit_krit
+            call vishel_pokyrit_krit
         "Хорошо, я тогда пойду после вас.":
             Alexandr "Хорошо, я тогда пойду после вас."
+
 
 
     return
 
 label vishel_pokyrit_krit:
-
     Alexandr "Давайте я тогда схожу первый, а после уже вы."
     hide sergey5
-
     show sergey6
-    voice "Ser/Serge20.mp3"
     Sergei "Хорошо, иди. Но не долго!"
     hide sergey6
-
     scene black
     with fade
     "Александр уходит из офиса компании в курилку."
     "Спустя 5 минут Александр вернулся"
-
     scene bg ofice
     with fade
-
     show sergey5
-
     return
 
 
 
 
 label ybrat_korobky:
-
     "Александр убирает коробку с монитором в угол склада и идет дальше разгружать комплектующие."
-
     "В этот момент на склад входит Сергей."
-
     show sergey6
-    voice "Ser/Serge11.mp3"
     Sergei "Ну как дела тут у тебя, Саня?"
     hide sergey6
-
     show sergey1
     menu:
         "Выберите вариант ответа"
@@ -389,25 +327,20 @@ label ybrat_korobky:
         "Все хорошо, Сергей. Потихоньку выполняю поставленную задачу.":
             $ krits = krits + 1
             $ renpy.notify("Он запомнит это")
-            call ne_pravda from _call_ne_pravda
+            call ne_pravda
         "Простите меня Сергей, пока я разгружал коробки с комплектующими, я случайно уронил коробку с монитором и разбил его. Из-за того что начал переживать я коробку убрал в угол склада вон там.":
             $ renpy.notify("Он запомнит это")
-            call pravda_polomka2 from _call_pravda_polomka2
+            call pravda_polomka2
 
     return
 
 label pravda_polomka2:
     Alexandr "Простите меня Сергей, пока я разгружал коробки с комплектующими, я случайно уронил коробку с монитором и разбил его. Из-за того что начал переживать я коробку убрал в угол склада вон там."
     hide sergey1
-
     show sergey6
-    voice "Ser/Serge14.mp3"
     Sergei "Ничего страшно, Саня. И такое тоже бывает, оставь коробку там, коробку я с ней позже разберусь"
-    voice "Ser/Serge15.mp3"
     Sergei "Продолжай работать, а я пойду дальше по своим делам. Скоро вернусь."
     hide sergey6
-    with fade
-
     "Сергей уходит со склада."
 
     return
@@ -415,31 +348,20 @@ label pravda_polomka2:
 label ne_pravda:
     Alexandr "Все хорошо, Сергей. Потихоньку выполняю поставленную задачу."
     hide sergey1
-
     show sergey2
-    voice "Ser/Serge12.mp3"
     Sergei "Хорошая работа, Саня. Если у тебя возникнут какие-либо вопросы, не стесняйся обращаться ко мне."
     hide sergey2
-
     show sergey1
     Alexandr "Обязательно. Спасибо, Сергей."
     hide sergey1
-
     show sergey6
-    voice "Ser/Serge13.mp3"
     Sergei "Продолжай работать, а я пойду дальше по своим делам. Скоро вернусь."
-    hide sergey6
-    with fade
-
-    "Сергей уходит со склада."
-
     return
 
 label posmotret_v_korobky:
     "Александр открывает коробку с монитором и видит что он оказался разбитым."
     "В этот момент на склад входит Сергей."
     show sergey6
-    voice "Ser/Serge7.mp3"
     Sergei "Ну как дела тут у тебя, Саня?"
     hide sergey6
     show sergey1
@@ -449,10 +371,10 @@ label posmotret_v_korobky:
        " Пока сортировал тут разгруженные коробки, я заметил что один из мониторов оказался разбитым.":
            $ krits = krits + 1
            $ renpy.notify("Он запомнит это")
-           call brak from _call_brak
+           call brak
        "Простите меня Сергей, пока я разгружал коробки с комплектующими, я случайно уронил коробку с монитором и разбил его.":
            $ renpy.notify("Он запомнит это")
-           call pravda_polomka1 from _call_pravda_polomka1
+           call pravda_polomka1
     return
 
 label pravda_polomka1:
@@ -460,25 +382,18 @@ label pravda_polomka1:
     hide sergey1
 
     show sergey2
-    voice "Ser/Serge9.mp3"
     Sergei "Ничего страшно, Саня. И такое тоже бывает, отложи коробку я с ней позже разберусь"
-    voice "Ser/Serge10.mp3"
     Sergei "Продолжай работать, а я пойду дальше по своим делам. Скоро вернусь."
     hide sergey2
-    with fade
     "Сергей уходит со склада."
     return
 
 label brak:
-
     Alexandr "Пока сортировал тут разгруженные коробки, я заметил что один из мониторов оказался разбитым."
     hide sergey1
-
     show sergey2
-    voice "Ser/Serge8.mp3"
     Sergei "Плохи дела. Но ты не переживай Саня, я обязательно разберусь с поставщиками за бракованный товар. А ты продолжай работать."
     hide sergey2
-    with fade
     "Сергей уходит со склада."
     return
 
@@ -486,7 +401,6 @@ label krit1:
 
     hide sergey5
     show sergey4
-    voice "Ser/Serge2.mp3"
     Sergei "Хорошо, но давай по быстрому."
     hide sergey4
 
@@ -505,23 +419,20 @@ label krit1:
     return
 
 label contin:
-    show irina_raz
-    voice "Iri/Irina5.mp3"
-    Irina "Александр, я не могу залогиниться в мой рабочий компьютер. Что-то не так с моей учетной записью. Я вводила пороль а мне высвечивается что он не правильный."
+    show irina2
     $ renpy.notify("Важная деталь")
-    voice "Iri/Irina6.mp3"
+    Irina "Александр, я не могу залогиниться в мой рабочий компьютер. Что-то не так с моей учетной записью. Я вводила пороль а мне высвечивается что он не правильный."
     Irina "Недавно мне переустановили операционную систему из-за вирусов ПРИМЕРНО ГОД НАЗАД. Сергей где-то оставил записку с паролем, но я ее потеряла."
-    hide irina_raz
-
-    show irina_mol
+    hide irina2
+    show irina3
     menu:
         "Выберите вариант ответа"
 
         "Не волнуйтесь, Ирина. Я уверен, мы найдем решение. Где находится ваш рабочий компьютер?":
             $ pomosh = True
-            call pomoch_srazy from _call_pomoch_srazy
+            call pomoch_srazy
         "Сейчас Сергей ушел на перекур, я ему передам вашу проблему как он вернется.":
-            call pomoch_potom from _call_pomoch_potom
+            call pomoch_potom
 
     "Александр начал осматривать рабочий стол Ирины на наличие записки с паролем."
     if (krits >= 3):
@@ -531,6 +442,7 @@ label contin:
     scene zap
     with fade
     "Изучите записки(чтобы скрыть/показать диалоговое окно нажмите H)"
+    hide dialoge
     "Он увидел 4 клочка бумажки с паролями, где на каждом из них в углу написана дата."
     jump contin2
     return
@@ -540,28 +452,26 @@ label contin2:
         "Выберете записку"
 
         "Выбрать записку с паролем 12.05.2023":
-            call perebor_nevernogo_parola from _call_perebor_nevernogo_parola
+            call perebor_nevernogo_parola
             jump konec_pervogo_dna_na_ploho
         "Выбрать записку с паролем 27.09.2023":
-            call perebor_nevernogo_parola from _call_perebor_nevernogo_parola_1
+            call perebor_nevernogo_parola
             jump konec_pervogo_dna_na_ploho
         "Выбрать записку с паролем 01.03.2019":
-            call perebor_nevernogo_parola from _call_perebor_nevernogo_parola_2
+            call perebor_nevernogo_parola
             jump konec_pervogo_dna_na_ploho
         "Выбрать записку с паролем 20.11.2022":
-            call perebor_vernogo_parola from _call_perebor_vernogo_parola
+            call perebor_vernogo_parola
             jump konec_pervogo_dna_na_horosho
         "Спросить Ирину про дату":
             $ zabil = zabil + 1
             if (zabil <= 2):
                 Alexandr "Ирина, не подскажите какая сегодня дата?"
-                voice "Iri/Irina10.mp3"
                 Irina "Сегодня 24 ноября 2023 года."
                 Alexandr "Спасибо!"
                 jump contin2
             else:
                 Alexandr "Ирина, не подскажите какая сегодня дата?"
-                voice "Iri/Irina_izdev.mp3"
                 Irina "Вы издеваетесь ?"
                 Alexandr "Извиняюсь."
                 jump contin2
@@ -579,33 +489,24 @@ label perebor_nevernogo_parola:
 
 label pomoch_srazy:
     Alexandr "Не волнуйтесь, Ирина. Я уверен, мы найдем решение. Где находится ваш рабочий компьютер?"
-    hide irina_mol
-
+    hide irina3
     show irina2
-    voice "Iri/Irina7.mp3"
     Irina "Пройдёмте за мной."
-
     scene bg sergey_room
     with fade
-
     "Александр и Ирина отправляются в кабинет, где она работала"
     return
-
 label pomoch_potom:
     Alexandr "Сейчас Сергей ушел на перекур, я ему передам вашу проблему как он вернется."
-    hide irina_mol
-
+    hide irina3
     show irina2
-    voice "Iri/Irina8.mp3"
     Irina "Хорошо, спасибо Александр. Только не забудьте передать."
     hide irina2
-
     "Ирина выходит из офиса компании."
     "5 минут спустя."
     "Сергей возвращается в офис после перекура."
 
     show sergey6
-    voice "Ser/Serge21.mp3"
     Sergei "Что происходило во время моего отсутствия?"
     hide sergey6
 
@@ -614,7 +515,6 @@ label pomoch_potom:
     hide sergey5
 
     show sergey6
-    voice "Ser/Serge22.mp3"
     Sergei "Ты ей помог?"
     hide sergey6
 
@@ -623,7 +523,6 @@ label pomoch_potom:
     hide sergey5
 
     show sergey2
-    voice "Ser/Serge23.mp3"
     Sergei "Сможешь сходить посмотреть что у ней не так? А я пойду в кабинет к Урику Мали обсудить рабочие моменты. Если у тебя не получится справится с задачей, не стесняйся, обращайся ко мне. Я помогу."
     hide sergey2
 
@@ -636,21 +535,15 @@ label pomoch_potom:
                 Alexandr "Хорошо, сейчас схожу."
                 scene bg sergey_room
                 with fade
-
             "Хорошо, я схожу после ещё после одного перекура.":
                 $ krits = krits + 1
                 $ renpy.notify("Он запомнит это")
-
                 scene black
                 with fade
-
                 "Александр уходит из офиса компании в курилку."
-
                 "6 минут спустя."
-
                 scene bg sergey_room
                 with fade
-
                 "Возвращаясь с перекура Александр пошел в кабинет Ирины."
     else:
         menu:
@@ -676,53 +569,38 @@ label konec_pervogo_dna_na_ploho:
     "На экране загорелась красным знаком, блокировка 24 часа, из за того что введен не правильный пароль."
     scene bg sergey_room
     with fade
-
     show irina3
     Alexandr "Извините Ирина. Я сейчас схожу к Сергею, спрошу что делать."
     "Александр выходит из кабинета Ирины  и направляется в кабинет Урика Мали."
-
     scene black
     with fade
-
     "Александр входит в кабинет Урика Мали, где разговаривали между собой Сергей и Урик Мали."
-
     scene bg malisroom
     with fade
-
     show mali1 at left
     show sergey1 at right
     Alexandr "Здравствуйте, мистер Мали."
     hide mali1
-
     show mali2 at left
-    voice "Uri/Urik7.mp3"
     UrikMali "Здравствуй, Александр."
     hide mali2
     hide sergey1
-
     show mali1 at left
     show sergey2 at right
-    voice "Ser/Serge24.mp3"
     Sergei "Что-то случилось?"
     hide sergey2
-
     show sergey1 at right
     Alexandr "Я пытался помочь Ирине с паролем от операционной системы, и я ввел пароль 3 раза неправильно. Теперь там стоит временная блокировка 24 часа."
     hide sergey1
-
     show sergey2 at right
-    voice "Ser/Serge25.mp3"
     Sergei "Ты пока постой тут Саня, а я пойду посмотрю компьютер Ирины."
-
     scene black
     with fade
     "Сергей выходит из кабинета Урика Мали."
-
     scene bg malisroom
     with fade
 
     show mali2
-    voice "Uri/Urik8.mp3"
     UrikMali "Вот уж дела. Дождемся Сергея, посмотрим что он скажет."
     "Спустя 7 минут."
     hide mali2
@@ -733,23 +611,19 @@ label konec_pervogo_dna_na_ploho:
     "Сергей заходит в кабинет Урика Мали."
     hide mali1
     show mali2 at right
-    voice "Uri/Urik9.mp3"
     UrikMali "Ну что там, Сергей?"
     hide mali2
     hide sergey1
 
     show mali1 at right
     show sergey2 at left
-    voice "Ser/Serge26.mp3"
     Sergei "Стоит блокировка системы на 24 часа."
     hide sergey2
     hide mali1
 
     show mali2 at right
     show sergey1 at left
-    voice "Uri/Urik10.mp3"
     UrikMali "Плохо дела. У нас видишь ли Александр, сейчас из за этого парализуется большая часть работы компании, и мы понесём серозные убытки."
-    voice "Uri/Urik11.mp3"
     UrikMali "К сожалению Александр, нам придется попрощаться."
     hide mali2
 
@@ -760,11 +634,10 @@ label konec_pervogo_dna_na_ploho:
     "Александр выходит из кабинета Урика Мали."
 
     scene plox_konc
-    play music "audio/bad_kon.mp3"
     with fade
     $ renpy.notify("Вы не прошли стажировку...(Плохая концовка)")
     window hide
-    "Конец"
+    background '''Конец'''
     nvl hide
     nvl clear
     return
@@ -781,23 +654,19 @@ label konec_pervogo_dna_na_horosho:
     with fade
 
     show irina2
-    voice "Iri/Irina11.mp3"
     Irina "Спасибо, Александр!"
     hide irina2
 
     show irina3
     Alexandr "Нет проблем. Если у вас возникнут еще какие-либо трудности, то обязательно обращайтесь."
-
     "Александр выходит из кабинета Ирины и возвращается в офис компании."
 
     scene bg ofice
     with fade
-
     "6 минут спустя."
     "Сергей заходит в офис компании."
     if (pomosh == True):
         show sergey6
-        voice "Ser/Serge21.mp3"
         Sergei "Что нибудь происходило в моё отсутствие, Саня?"
         hide sergey6
         show sergey1
@@ -805,7 +674,6 @@ label konec_pervogo_dna_na_horosho:
         Alexandr "Я нашел вашу записку с паролем, и теперь все заработало."
     else:
         show sergey2
-        voice "Ser/Serge27.mp3"
         Sergei "Ну что Саня, ты справился с задачей?"
         hide sergey2
         show sergey1
@@ -814,20 +682,15 @@ label konec_pervogo_dna_na_horosho:
     hide sergey1
 
     show sergey2
-    voice "Ser/Serge28.mp3"
     Sergei "Ты молодец Саня!"
-    voice "Ser/Serge29.mp3"
     Sergei "Пошли выпьем кофе и можем уже расходится. До конца рабочего дня осталось 10 минут."
     hide sergey2
 
     show sergey1
     Alexandr "Пойдемте."
-
     "Александр с Сергеем направились на кухню компании за кофе."
-
     scene black
     with fade
-
     window hide
     if (krits == 0):
         $ renpy.notify("Вы идеально завершили первый день стажировки")
@@ -846,7 +709,6 @@ label konec_pervogo_dna_na_horosho:
 
 
 label day2:
-    play music "audio/fon2.mp3"
     "Александр заходит в офис компании и видит там Сергея."
     scene bg ofice
     with fade
@@ -856,7 +718,6 @@ label day2:
     hide sergey5
 
     show sergey6
-    voice "Ser/Serge30.mp3"
     Sergei "Привет Саня. Рад видеть твою готовность к работе. Сегодня у нас есть еще одна интересная задача. Ты должен собрать новый ПК для нового сотрудника с использованием комплектующих, которые мы получили вчера."
     hide sergey6
 
@@ -865,9 +726,7 @@ label day2:
     hide sergey5
 
     show sergey6
-    voice "Ser/Serge31.mp3"
     Sergei "Комплектующие уже размещены на специальной площадке в складском помещении."
-    voice "Ser/Serge32.mp3"
     Sergei "Я сейчас пойду в серверную исправлять неполадки, а тебе нужно собрать компьютер, подключить монитор, клавиатуру и мышь. Тебе показать, где складское помещение?"
     hide sergey6
 
@@ -876,7 +735,6 @@ label day2:
     hide sergey5
 
     show sergey6
-    voice "Ser/Serge33.mp3"
     Sergei "Прекрасно. Возвращайся обратно в офис после окончания работы."
     hide sergey6
 
@@ -897,7 +755,6 @@ label day2:
 
 label sborka_pk: #------------------КОРПУС------------------------
     if (oshibka == 3):
-        $ renpy.notify("Получено достижение: Невыспавшийся")
         Alexandr "Что то я сегодня туплю, наверное не выспался"
         $ oshibka = oshibka + 1
         $ oshibka_achivka = True
@@ -1206,10 +1063,8 @@ label fin_sborki:
     hide sergey5
 
     show sergey6
-    voice "Ser/Serge34.mp3"
     Sergei "Отлично. Ты справился довольно быстро. Хорошая работа!"
     hide sergey6
-
     show sergey5
     play sound "call.ogg"
     "Телефон Сергея звонит."
@@ -1217,14 +1072,12 @@ label fin_sborki:
 
     hide sergey5
     show sergey6
-    voice "Ser/Serge35.mp3"
     Sergei "Извини, мне нужно ответить на звонок. Подожди, пожалуйста, пару минут."
 
     "Сергей разговаривает по телефону с Уриком Мали, после чего говорит к Александру."
-    voice "Ser/Serge36.mp3"
+
     Sergei "Урик Мали звонил и просил помочь ему разобраться с проблемой. Он говорит, что после скачивания игры, у него начались проблемы с интернетом. Ты можешь пойти к нему и посмотреть, что случилось?"
 
-    voice "Ser/Serge37.mp3"
     Sergei "А я займусь установкой ПО на компьютер, который ты собрал."
     hide sergey6
     show sergey5
@@ -1249,7 +1102,6 @@ label mali_problem:
     hide mali1
 
     show mali2
-    voice "Uri/Urik12.mp3"
     UrikMali "Здравствуй, Александр. У меня перестал работать интернет на компьютере после того, как я скачал игру . Можешь посмотреть, в чем проблема?"
     hide mali2
 
@@ -1292,7 +1144,6 @@ label sborka_pk_mali_prod:
 
     hide mali1
     show mali2
-    voice "Uri/Urik13.mp3"
     UrikMali "Может, пока ждем, кофе или чай налить?"
 
     hide mali2
@@ -1322,7 +1173,6 @@ label ustran_ugroz:
                 "После того, как Александр устранил угрозы и проигнорировал сообщения антивируса о перезагрузке ПК, он сразу обратил внимание, что интернет так и не заработал."
                 show mali2
                 with fade
-                voice "Uri/Urik14.mp3"
                 UrikMali "Может, все же стоит перезагрузить компьютер?"
                 hide mali2
                 show mali1
@@ -1360,7 +1210,6 @@ label ustran:
     hide mali1
 
     show mali2
-    voice "Uri/Urik15.mp3"
     UrikMali "Спасибо, Александр, похоже, что я случайно его ногой задел и отключил."
     hide mali2
 
@@ -1369,7 +1218,6 @@ label ustran:
     hide mali1
 
     show mali2
-    voice "Uri/Urik16.mp3"
     UrikMali "И еще, Александр. До конца смены осталось 30 минут, и так как ты сегодня хорошо поработал, можешь уйти пораньше."
     hide mali2
 
@@ -1395,7 +1243,6 @@ label konec_vtorogo_dna:
     hide sergey5
 
     show sergey6
-    voice "Ser/Serge38.mp3"
     Sergei "Конечно, молодчина, Саня. Удачи тебе!"
     hide sergey6
 
@@ -1428,7 +1275,6 @@ label treti_den:
     with fade
 
     show irina2
-    voice "Iri/Irina12.mp3"
     Irina "Здравствуйте, Александр. Сегодня у вас финальный день стажировки. Вас ожидает анкетирование."
     hide irina2
 
@@ -1437,7 +1283,6 @@ label treti_den:
     hide irina1
 
     show irina2
-    voice "Iri/Irina13.mp3"
     Irina "Отлично, тогда присаживайтесь за этот компьютер. Там уже все открыто и настроено, можете начинать."
     hide irina2
 
@@ -1587,7 +1432,6 @@ label konec_anketi:
 
     show sergey6
     with fade
-    voice "Ser/Serge39.mp3"
     Sergei "Здарова, Саня. Я вижу, ты уже написал анкетирование."
     hide sergey6
 
@@ -1596,7 +1440,6 @@ label konec_anketi:
     hide sergey5
 
     show sergey6
-    voice "Ser/Serge40.mp3"
     Sergei "На сегодня для тебя дел больше нет. Приходи сюда завтра, Урик Мали посмотрит твое анкетирование и примет решение."
     hide sergey6
 
@@ -1605,7 +1448,6 @@ label konec_anketi:
     hide sergey5
 
     show sergey6
-    voice "Ser/Serge41.mp3"
     Sergei "До завтра."
 
     scene black
@@ -1623,8 +1465,6 @@ label chetverti_den:
     nvl hide
     nvl clear
 
-    scene bg ofice
-
     "Александр заходит в офис компании, где никого нет."
     Alexandr "Хм, может, я рано пришел?"
     "Спустя 7 минут."
@@ -1632,7 +1472,6 @@ label chetverti_den:
     "В офис заходит Урик Мали и подходит к Александру."
     show mali2
     with fade
-    voice "Uri/Urik17.mp3"
     UrikMali "Здравствуй, Александр. Пройдем ко мне в кабинет, обсудим твое трудоустройство."
     hide mali2
 
@@ -1645,19 +1484,15 @@ label chetverti_den:
     with fade
 
     show mali2
-    voice "Uri/Urik18.mp3"
     UrikMali "Присаживайся. Я посмотрел твое анкетирование и также спросил Сергея, как ты работал."
-
     "..."
-
-    voice "Uri/Urik19.mp3"
     UrikMali "По итогу я хочу сказать, что ты принят в наш штат!"
     hide mali2
 
     show mali1
     Alexandr "Спасибо Вам большое, мистер Мали. Я Вас не подведу."
 
-    scene bg kabgg
+    scene black
     with fade
     $ renpy.notify("Вы прошли стажировки (Хорошая концовка)")
     "Конец"
@@ -1669,7 +1504,7 @@ label ploxai_koncovka:
     "У Александра зазвонил телефон в кармане."
 
     Alexandr "Ало..."
-    voice "Uri/Urik20.mp3"
+
     UrikMali "Александр, это Урик Мали. Можешь подойти в мой кабинет, обсудить пару вопросов?"
 
     Alexandr "Кончено, я уже иду."
@@ -1682,14 +1517,11 @@ label ploxai_koncovka:
     "Александр постучав в дверь зашёл в кабинет Урика Мали."
 
     show mali1
-    Alexandr "Здравствуйте, мистер Мали."
+    Alexandr "Здравствуйте ещё раз, мистер Мали."
     hide mali1
 
     show mali2
-    voice "Uri/Urik21.mp3"
-    UrikMali "Здравствуй, Александр, присаживайся."
-
-    voice "Uri/Urik22.mp3"
+    UrikMali "Ещё раз здравствуй, Александр, присаживайся."
     UrikMali "Я тут следил за твоей работой, и не очень доволен ею. К сожалению нам проедется разойтись."
     hide mali2
 
@@ -1700,10 +1532,8 @@ label ploxai_koncovka:
     hide mali1
 
     show mali2
-    voice "Uri/Urik23.mp3"
-    UrikMali "Всего доброго, Александр."
+    UrikMali "До свидания, Александр."
 
-    play music "audio/bad_kon.mp3"
     scene plox_konc
     with fade
     $ renpy.notify("Вы не смогли завершить стажировку (Плохая концовка)")
