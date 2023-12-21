@@ -748,7 +748,7 @@ label konec_pervogo_dna_na_ploho:
     show mali2 at right
     show sergey1 at left
     voice "Uri/Urik10.mp3"
-    UrikMali "Плохо дела. У нас видишь ли Александр, сейчас из за этого парализуется большая часть работы компании, и мы понесём серозные убытки."
+    UrikMali "Плохо дела. У нас видишь ли Александр, сейчас из за этого парализуется большая часть работы компании, и мы понесём серьёзные убытки."
     voice "Uri/Urik11.mp3"
     UrikMali "К сожалению Александр, нам придется попрощаться."
     hide mali2
@@ -1657,7 +1657,7 @@ label chetverti_den:
     show mali1
     Alexandr "Спасибо Вам большое, мистер Мали. Я Вас не подведу."
 
-    scene bg kabgg
+    scene good_end
     with fade
     $ renpy.notify("Вы прошли стажировки (Хорошая концовка)")
     "Конец"
